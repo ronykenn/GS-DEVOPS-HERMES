@@ -25,7 +25,7 @@ jobs:
       - name: Configure AWS credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::188776114680:role/HermesGitHubActionsDeployRole
+          role-to-assume: arn:aws:iam::188776114680:role/HermesGithubActionsDeployRole
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Validate access to Parameter Store
