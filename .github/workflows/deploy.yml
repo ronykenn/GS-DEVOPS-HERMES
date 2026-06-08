@@ -22,34 +22,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Debug OIDC token claims
-        run: |
-          python3 - <<'PY'
-          import os, json, base64, urllib.request
-
-          request_url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience=sts.amazonaws.com"
-          request_token = os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]
-
-          req = urllib.request.Request(request_url, headers={"Authorization": f"Bearer {request_token}"})
-          with urllib.request.urlopen(req) as response:
-              token = json.loads(response.read().decode())["value"]
-
-          payload = token.split(".")[1]
-          payload += "=" * ((4 - len(payload) % 4) % 4)
-          claims = json.loads(base64.urlsafe_b64decode(payload.encode()).decode())
-
-          print("OIDC iss:", claims.get("iss"))
-          print("OIDC aud:", claims.get("aud"))
-          print("OIDC sub:", claims.get("sub"))
-          print("OIDC repository:", claims.get("repository"))
-          print("OIDC ref:", claims.get("ref"))
-          print("OIDC workflow_ref:", claims.get("job_workflow_ref"))
-          PY
-
       - name: Configure AWS credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::188776114680:role/HermesGithubActionsDeployRole
+          role-to-assume: arn:aws:iam::188776114680:role/HermesDeployRole
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Validate access to Parameter Store
