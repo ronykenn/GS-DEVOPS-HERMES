@@ -53,16 +53,24 @@ body {
   gap: 14px;
 }
 
-.brand-icon {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
+.brand-logo {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  padding: 4px;
   border-radius: 50%;
-  background: var(--primary);
-  color: white;
-  font-weight: 800;
-  box-shadow: 0 0 35px rgba(91, 131, 255, 0.5);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 34px rgba(91, 131, 255, 0.26);
+}
+
+.hero-logo {
+  width: min(300px, 58vw);
+  height: auto;
+  display: block;
+  margin-bottom: 22px;
+  filter: drop-shadow(0 0 38px rgba(91, 131, 255, 0.32));
+  opacity: 0.96;
 }
 
 .brand strong,
@@ -88,7 +96,7 @@ body {
 
 .hero-content {
   max-width: 960px;
-  margin: 150px auto 0;
+  margin: 120px auto 0;
 }
 
 .eyebrow {
@@ -353,7 +361,11 @@ footer {
   }
 
   .hero-content {
-    margin-top: 110px;
+    margin-top: 80px;
+  }
+
+  .hero-logo {
+    width: min(220px, 70vw);
   }
 
   .navbar {
