@@ -45,6 +45,7 @@ jobs:
             --exclude "README.md"
 
       - name: Invalidate CloudFront cache
+        continue-on-error: true
         run: |
           aws cloudfront create-invalidation \
             --distribution-id $CLOUDFRONT_DISTRIBUTION_ID \
