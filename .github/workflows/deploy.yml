@@ -12,7 +12,7 @@ permissions:
 env:
   AWS_REGION: us-east-2
   S3_BUCKET: gs-devops-hermes-ronykenn
-  CLOUDFRONT_DISTRIBUTION_ID: E205W33BAJ2N
+  CLOUDFRONT_DISTRIBUTION_ID: E205W3358AJ52N
 
 jobs:
   deploy:
